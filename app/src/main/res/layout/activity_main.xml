@@ -17,202 +17,134 @@
         android:text=""
         android:textSize="24sp"
         android:layout_margin="20dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="end"/>
 
 <!--Grid for All buttons-->
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:columnCount="4">
 <!--Line 1-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/light_grey"
+                style="@style/CalculatorButton.Control"
                 android:id="@+id/btn_clear"
                 android:text="AC"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_7"
                 android:text="7"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_4"
                 android:text="4"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_1"
                 android:text="1"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_"
                 android:text=""/>
         </LinearLayout>
 
 <!--Line 2-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/light_grey"
+                style="@style/CalculatorButton.Control"
                 android:id="@+id/btn_sign"
                 android:text="+/-"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_8"
                 android:text="8"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_5"
                 android:text="5"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_2"
                 android:text="2"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_0"
                 android:text="0"/>
         </LinearLayout>
 
 <!--Line 3-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/light_grey"
+                style="@style/CalculatorButton.Control"
                 android:id="@+id/btn_percent"
                 android:text="%"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_9"
                 android:text="9"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_6"
                 android:text="6"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_3"
                 android:text="3"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/dark_grey"
+                style="@style/CalculatorButton.Number"
                 android:id="@+id/btn_decimal"
                 android:text="."/>
         </LinearLayout>
 
 <!--Operators-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/orange"
+                style="@style/CalculatorButton.Operator"
                 android:id="@+id/btn_div"
                 android:text="/" />
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/orange"
+                style="@style/CalculatorButton.Operator"
                 android:id="@+id/btn_mul"
                 android:text="*" />
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/orange"
+                style="@style/CalculatorButton.Operator"
                 android:id="@+id/btn_sub"
                 android:text="-" />
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/orange"
+                style="@style/CalculatorButton.Operator"
                 android:id="@+id/btn_add"
                 android:text="+" />
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/orange"
+                style="@style/CalculatorButton.Operator"
                 android:id="@+id/btn_equals"
                 android:text="=" />
         </LinearLayout>
 
 
     </GridLayout>
-
-
-    <!--TODO: Need to remove as number containers will replace these 2 fields-->
-    <EditText
-        android:id="@+id/et_a"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="Enter a " />
-
-    <EditText
-        android:id="@+id/et_b"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="Enter b " />
-
 
 
 </LinearLayout>
