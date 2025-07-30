@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+<!--IOS Calculator color scheme-->
+    <color name="light_grey">#a5a5a5</color>
+    <color name="dark_grey">#333333</color>
+    <color name="orange">#fea00a</color>
+
 </resources>
