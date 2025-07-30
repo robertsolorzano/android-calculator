@@ -3,9 +3,9 @@
 
     <!-- Base Style for all Calculator Buttons -->
     <style name="CalculatorButton">
-        <item name="android:layout_width">72dp</item>
-        <item name="android:layout_height">72dp</item>
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_width">82dp</item>
+        <item name="android:layout_height">82dp</item>
+        <item name="android:layout_margin">9dp</item>
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
         <item name="android:insetTop">0dp</item>
@@ -32,5 +32,18 @@
         <item name="android:backgroundTint">@color/light_grey</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <!-- Results -->
+    <style name="CalculatorButton.Result">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">""</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">62sp</item>
+    </style>
+
+
 
 </resources>
