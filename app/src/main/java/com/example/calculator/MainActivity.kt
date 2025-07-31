@@ -16,32 +16,32 @@ import kotlin.text.toDoubleOrNull
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     //Controls
-    lateinit var btnClear: Button
-    lateinit var btnSign: Button
-    lateinit var btnPercent: Button
+    private lateinit var btnClear: Button
+    private lateinit var btnSign: Button
+    private lateinit var btnPercent: Button
 
     //Operators
-    lateinit var btnAdd: Button
-    lateinit var btnSub: Button
-    lateinit var btnMul: Button
-    lateinit var btnDiv: Button
-    lateinit var btnEqual: Button
+    private lateinit var btnAdd: Button
+    private lateinit var btnSub: Button
+    private lateinit var btnMul: Button
+    private lateinit var btnDiv: Button
+    private lateinit var btnEqual: Button
 
     //Values
-    lateinit var btn1: Button
-    lateinit var btn2: Button
-    lateinit var btn3: Button
-    lateinit var btn4: Button
-    lateinit var btn5: Button
-    lateinit var btn6: Button
-    lateinit var btn7: Button
-    lateinit var btn8: Button
-    lateinit var btn9: Button
-    lateinit var btn0: Button
-    lateinit var btnDecimal: Button
+    private lateinit var btn1: Button
+    private lateinit var btn2: Button
+    private lateinit var btn3: Button
+    private lateinit var btn4: Button
+    private lateinit var btn5: Button
+    private lateinit var btn6: Button
+    private lateinit var btn7: Button
+    private lateinit var btn8: Button
+    private lateinit var btn9: Button
+    private lateinit var btn0: Button
+    private lateinit var btnDecimal: Button
 
     //Result
-    lateinit var resultTv: TextView
+    private lateinit var resultTv: TextView
 
     //Input States
     private var currentInput: String = ""
@@ -181,14 +181,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (firstOperand != null && pendingOperation != null && currentInput.isNotEmpty()) {
             val secondOperand = currentInput.toDoubleOrNull()
             if (secondOperand != null) {
-                var resultValue: Double = 0.0
+                var resultValue = 0.0
                 when (pendingOperation) {
                     "+" -> resultValue = firstOperand!! + secondOperand
                     "-" -> resultValue = firstOperand!! - secondOperand
                     "*" -> resultValue = firstOperand!! * secondOperand
                     "/" -> {
                         if (secondOperand == 0.0) {
-                            resultTv.text = "Error"
+                            resultTv.text = getString(R.string.div_by_zero_error)
                             clearAll(resetDisplay = false)
                             return
                         }
@@ -224,10 +224,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun toggleSign() {
         if (currentInput.isNotEmpty()) {
-            if (currentInput.startsWith("-")) {
-                currentInput = currentInput.substring(1)
+            currentInput = if (currentInput.startsWith("-")) {
+                currentInput.substring(1)
             } else {
-                currentInput = "-$currentInput"
+                "-$currentInput"
             }
             resultTv.text = currentInput
         } else if (firstOperand != null) {
