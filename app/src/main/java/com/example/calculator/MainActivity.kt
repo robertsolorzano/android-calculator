@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     "*" -> resultValue = firstOperand!! * secondOperand
                     "/" -> {
                         if (secondOperand == 0.0) {
-                            resultTv.text = "Error"
+                            resultTv.text = getString(R.string.div_by_zero_error)
                             clearAll(resetDisplay = false)
                             return
                         }
@@ -234,7 +234,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     "*" -> resultValue = firstOperand!! * secondOperand
                     "/" -> {
                         if (secondOperand == 0.0) {
-                            resultTv.text = "Error"
+                            resultTv.text = getString(R.string.div_by_zero_error)
                             clearAll(resetDisplay = false)
                             return
                         }
