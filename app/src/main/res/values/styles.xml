@@ -6,7 +6,6 @@
         <item name="android:layout_width">82dp</item>
         <item name="android:layout_height">82dp</item>
         <item name="android:layout_margin">9dp</item>
-        <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -19,18 +18,21 @@
     <style name="CalculatorButton.Number" parent="CalculatorButton">
         <item name="android:backgroundTint">@color/dark_grey</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">34sp</item>
     </style>
 
     <!-- Operators -->
     <style name="CalculatorButton.Operator" parent="CalculatorButton">
         <item name="android:backgroundTint">@color/orange</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">34sp</item>
     </style>
 
     <!-- Controls -->
     <style name="CalculatorButton.Control" parent="CalculatorButton">
         <item name="android:backgroundTint">@color/light_grey</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
     <!-- Results -->
