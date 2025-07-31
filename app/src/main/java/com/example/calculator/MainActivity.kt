@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var currentInput: String = ""
     private var firstOperand: Double? = null
     private var pendingOperation: String? = null
+    private var justCalculated: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -146,35 +147,80 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     private fun appendNumber(number: String) {
         currentInput += number
-        resultTv.text = currentInput
-    }
 
+        if (resultTv.text.toString() == "0" || justCalculated) {
+            resultTv.text = number
+            justCalculated = false
+        } else {
+            // Append to existing display
+            resultTv.text = "${resultTv.text}$number"
+        }
+    }
 
     private fun appendDecimal() {
         if (!currentInput.contains(".")) {
             if (currentInput.isEmpty()) {
                 currentInput = "0."
+                if (resultTv.text.toString() == "0" || justCalculated) {
+                    resultTv.text = "0."
+                    justCalculated = false
+                } else {
+                    resultTv.text = "${resultTv.text}0."
+                }
             } else {
                 currentInput += "."
+                resultTv.text = "${resultTv.text}."
             }
-            resultTv.text = currentInput
         }
     }
 
     private fun handleOperation(operation: String) {
         if (currentInput.isNotEmpty()) {
-            if (firstOperand == null) {
+            if (firstOperand != null && pendingOperation != null) {
+                calculateIntermediateResult()
+            } else {
                 firstOperand = currentInput.toDoubleOrNull()
-            } else if (pendingOperation != null) {
-                calculateResult()
             }
-            firstOperand = resultTv.text.toString().toDoubleOrNull()
         }
+
         pendingOperation = operation
+
+        val currentDisplay = resultTv.text.toString()
+        if (!currentDisplay.endsWith(" ")) {
+            resultTv.text = "$currentDisplay $operation "
+        } else {
+            val displayWithoutLastOp = currentDisplay.dropLastWhile { it == ' ' || it in "+-*/" }
+            resultTv.text = "$displayWithoutLastOp $operation "
+        }
+
         currentInput = ""
+        justCalculated = false
+    }
+
+
+    private fun calculateIntermediateResult() {
+        if (firstOperand != null && pendingOperation != null && currentInput.isNotEmpty()) {
+            val secondOperand = currentInput.toDoubleOrNull()
+            if (secondOperand != null) {
+                var resultValue = 0.0
+                when (pendingOperation) {
+                    "+" -> resultValue = firstOperand!! + secondOperand
+                    "-" -> resultValue = firstOperand!! - secondOperand
+                    "*" -> resultValue = firstOperand!! * secondOperand
+                    "/" -> {
+                        if (secondOperand == 0.0) {
+                            resultTv.text = "Error"
+                            clearAll(resetDisplay = false)
+                            return
+                        }
+                        resultValue = firstOperand!! / secondOperand
+                    }
+                }
+                firstOperand = resultValue
+            }
+        }
     }
 
     private fun calculateResult() {
@@ -188,7 +234,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     "*" -> resultValue = firstOperand!! * secondOperand
                     "/" -> {
                         if (secondOperand == 0.0) {
-                            resultTv.text = getString(R.string.div_by_zero_error)
+                            resultTv.text = "Error"
                             clearAll(resetDisplay = false)
                             return
                         }
@@ -196,11 +242,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
                 resultTv.text = formatResult(resultValue)
-                firstOperand =
-                    resultValue
+                firstOperand = resultValue
                 pendingOperation = null
-                currentInput =
-                    resultTv.text.toString()
+                currentInput = ""
+                justCalculated = true
             }
         }
     }
@@ -217,6 +262,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         currentInput = ""
         firstOperand = null
         pendingOperation = null
+        justCalculated = false
         if (resetDisplay) {
             resultTv.text = "0"
         }
